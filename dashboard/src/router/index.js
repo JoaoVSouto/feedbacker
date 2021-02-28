@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+
+const Home = () => import('')
+const Feedbacks = () => import('')
+const Credentials = () => import('')
 
 const routes = [
   {
@@ -8,9 +11,26 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue')
+    path: '/feedbacks',
+    name: 'Feedbacks',
+    component: Feedbacks,
+    meta: {
+      hasAuth: true
+    }
+  },
+  {
+    path: '/credentials',
+    name: 'Credentials',
+    component: Credentials,
+    meta: {
+      hasAuth: true
+    }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: {
+      name: 'Home'
+    }
   }
 ]
 
